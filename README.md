@@ -12,7 +12,7 @@ Sample config is follows,
 "accessories": [
 { 
 "accessory": "TubeLight",
-"name": "Bedroom Fan",
+"name": "Bedroom Light",
 "onLink": "http://192.168.250.2:3001/ON",
 "offLink": "http://192.168.250.2:3001/OFF",
 "statusLink": "http://192.168.250.2:3001/STATUS"
