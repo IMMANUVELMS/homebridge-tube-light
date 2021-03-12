@@ -50,7 +50,7 @@ TubeLight.prototype.getPowerOn = function(callback) {
   callback(null, powerOn);
 }
 
-CeilingFan.prototype.setPowerOn = function(powerOn, callback) {
+TubeLight.prototype.setPowerOn = function(powerOn, callback) {
 	
 if(powerOn){	
 	  httpreq.get(this.onLink)
