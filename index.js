@@ -79,7 +79,7 @@ if(powerOn){
 }
 
 TubeLight.prototype.getServices = function() {
-    var tubeService = new Service.LightBulb(this.name);
+    var tubeService = new Service.Lightbulb(this.name);
     
     tubeService
       .getCharacteristic(Characteristic.On)
