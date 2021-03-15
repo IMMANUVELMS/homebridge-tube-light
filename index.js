@@ -34,9 +34,11 @@ TubeLight.prototype.getPowerOn = function(callback) {
   if(response.data == "ON" || response.data == "1"){
 		this.log("'%s' status is ON",this.tubeName);
 		this.tubeState = true;
+		callback(null, this.tubeState);
 	}else if(response.data == "OFF" || response.data == "0"){
 		this.log("'%s' status is OFF",this.tubeName);
 		this.tubeState = false;
+		callback(null, this.tubeState);
 	}else{
 		this.log("The TubeLight accessory returns Invalid data");
 	}
@@ -44,10 +46,11 @@ TubeLight.prototype.getPowerOn = function(callback) {
    
   })
   .catch(error => {
-    this.log(error);
+    this.log("%s is unreachable",this.tubeName);
+	callback(error);
   });	
-  var powerOn = this.tubeState > 0;
-  callback(null, powerOn);
+  
+  
 }
 
 TubeLight.prototype.setPowerOn = function(powerOn, callback) {
@@ -58,6 +61,7 @@ if(powerOn){
 		if(response.data == "ON" || response.data == "1"){
 		this.log("'%s' is set to ON",this.tubeName);
 		this.tubeState = true;
+		callback(null);
 	}
 	  })
 	  .catch(error => {
@@ -69,13 +73,15 @@ if(powerOn){
      if(response.data == "OFF" || response.data == "0"){
 		this.log("'%s' is set to OFF",this.tubeName);
 		this.tubeState = false;
+		callback(null);
 	}
   })
   .catch(error => {
-    this.log(error);
+    this.log("%s is unreachable",this.tubeName);
+	callback(error);
   }); 
   }	
-   callback(null);
+   
 }
 
 TubeLight.prototype.getServices = function() {
